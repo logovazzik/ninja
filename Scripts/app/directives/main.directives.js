@@ -36,8 +36,8 @@
                 var $layout = angular.element(".b-layout"),
                     $document = angular.element(document),
                     $body = angular.element("body"),
-                    headerModalOpenedClass = "b-header__inner_modal-opened",
-                    $header = angular.element(".b-header__inner"),
+                    headerModalOpenedClass = "fixed-modal-opened",
+                    $fixed = angular.element(".b-header__inner, .b-services-nav"),
 
                     _getScrollBarWidth = function() {
                         var scrollDiv = document.createElement('div');
@@ -50,15 +50,17 @@
                     _enableHeaderFix = function() {
 
                         $document.on("show.bs.modal", function() {
-                            $header.css({ "right": _getScrollBarWidth() });
-                            $header.addClass(headerModalOpenedClass);
+                            $fixed.css({ "right": _getScrollBarWidth() });
+                            $fixed.addClass(headerModalOpenedClass);
                         }).on("hidden.bs.modal", function() {
-                            $header.css({ "right": 0 });
-                            $header.removeClass(headerModalOpenedClass);
+                            $fixed.css({ "right": 0 });
+                            $fixed.removeClass(headerModalOpenedClass);
                         });
                     };
                 _enableHeaderFix();
-                if (browser && browser.msie || browser.opera_presto || browser.msie11) {
+                if (browser && browser.msie || browser.opera_presto || browser.msie11)
+                {
+                    
                     $document.on("show.bs.modal", function () {
                         $layout.css({ "padding-right": _getScrollBarWidth() });
 
