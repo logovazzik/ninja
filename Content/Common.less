@@ -858,12 +858,9 @@ svg {
         width:100%;
         z-index:10;
         left:0;
-        &_modal-opened{
-            width:auto;
-        }
+      
     }
 
-   
 
     &-table {
         display: table;
@@ -1063,9 +1060,11 @@ svg {
     padding-top: 1.5rem;
     position: fixed;
     top: 0;
+    left:0;
+    width:100%;
     z-index: 20;
     top: -30rem;
-    .transition(all 0.3s);
+    .transition(top 0.3s);
 
     &-reserved {
         position: relative;
@@ -1394,3 +1393,6 @@ svg {
         }
     }
 }
+   .fixed-modal-opened{
+         width:auto;
+   }
