@@ -20,11 +20,10 @@
             };
 
             $.ajax({
-                url: '/Landing/Send',
+                url: '/Email/SendEmail',
                 type: 'POST',
-                data: JSON.stringify(data),
-                dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data),
                 async: true
             }).success(function () {
                 $rootScope.$broadcast("feedback.success");

@@ -58,9 +58,7 @@
                         });
                     };
                 _enableHeaderFix();
-                if (browser && browser.msie || browser.opera_presto || browser.msie11)
-                {
-                    debugger;
+                if (browser && browser.msie || browser.opera_presto || browser.msie11) {
                     $document.on("show.bs.modal", function () {
                         $layout.css({ "padding-right": _getScrollBarWidth() });
 

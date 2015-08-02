@@ -1,5 +1,4 @@
 ﻿@model NinjaAdmin.Models.ViewModels.CommonViewModel
-
 <div class="b-section b-header"
      image-responsive="{
                              default : {
@@ -22,10 +21,6 @@
                     <a href="/" class="b-logo">
                       
                         @Html.Partial("Partials/Svg/LogoPartial")
-                      
-                       
-                     
-       
 
                         @*<img src="/Content/images/logo_v1.png" class="b-logo__image b-logo__image_large hidden-xs hidden-sm" width="244" height="68" border="0" />*@
                         @*<img src="/Content/images/logo_v2.png" width="125" height="30" class="b-logo__image b-logo__image_small visible-xs visible-sm" />*@
@@ -34,20 +29,20 @@
                 <div class="b-header-cell b-header-cell_c">
                     <ul class="list-unstyled  b-header-list hidden-xs hidden-sm">
                         <li class="b-header-list__item">
-                            <a href="javascript:void(0)" class="b-header-list__link">Что мы делаем</a>
+                            <a href="#what_we_do" class="b-header-list__link">Что мы делаем</a>
                         </li>
                         <li class="b-header-list__item">
-                            <a href="javascript:void(0)" class="b-header-list__link">Почему мы</a>
+                            <a href="#why_we" class="b-header-list__link">Почему мы</a>
                         </li>
                         <li class="b-header-list__item">
-                            <a href="javascript:void(0)" class="b-header-list__link">Контакты</a>
+                            <a href="#cts" class="b-header-list__link">Контакты</a>
                         </li>
                     </ul>
                 </div>
                 <div class="b-header-cell b-header-cell_r">
                     <div class="b-header__contacts">
-                        <a href="tel:@Model.Phone.Trim()" class="b-header__telephone">
-                            @*8 (931) 234 34 34*@@Model.Phone
+                        <a href="tel:@Model.Phone" class="b-header__telephone">
+                            @Model.Phone
                         </a>
 
                         <a href="mailto:@Model.Mail"><i>@Model.Mail</i></a>
@@ -59,17 +54,15 @@
                         <i class="b-menu-trigger__line"></i>
                     </a>
 
-
-
                     <ul class="list-unstyled  b-header-list b-header-list_mobile" ng-mobile-list="{ 'trigger' : '.b-menu-trigger', 'openClass' : 'b-header-list_mobile_open'}">
                         <li class="b-header-list__item">
-                            <a href="javascript:void(0)" class="b-header-list__link">Что мы делаем</a>
+                            <a href="#what_we_do" class="b-header-list__link">Что мы делаем</a>
                         </li>
                         <li class="b-header-list__item">
-                            <a href="javascript:void(0)" class="b-header-list__link">Почему мы</a>
+                            <a href="#why_we" class="b-header-list__link">Почему мы</a>
                         </li>
                         <li class="b-header-list__item">
-                            <a href="javascript:void(0)" class="b-header-list__link">Контакты</a>
+                            <a href="#cts" class="b-header-list__link">Контакты</a>
                         </li>
                     </ul>
 

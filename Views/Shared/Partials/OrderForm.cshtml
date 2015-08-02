@@ -18,9 +18,15 @@
     </div>
     <div class="b-form-group b-form-group_feedback-submit text-center">
         <div class="b-rounded b-rounded_button">
-            <button class="b-button" ng-disabled="orderService.$invalid" ng-click="OrderServiceCtrl.submit()">
+            <button class="b-button" ng-click="OrderServiceCtrl.submit()" ng-disabled="orderService.$invalid">
                 <span class="b-button__text">Заказать услугу</span>
             </button>
+        </div>
+    </div>
+    <div class="b-form-notice" ng-notice>
+        <div class="b-form-notice__text">
+            Заявка успешно отправлена!<br />
+            С вами скоро свяжутся.
         </div>
     </div>
 </form>
