@@ -1,0 +1,84 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.service-data {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+    .service-data td {
+        padding-top: .5em;
+        padding-bottom: .5em;
+    }
+
+.input-data-boxes {
+    width: 70%;
+}
+
+    .input-data-boxes input, textarea {
+        width: 100%;
+    }
+
+.service-data tr {
+    padding-bottom: 30px;
+}
+
+.common-info-table {
+    width: 70%;
+    align-self: center;
+}
+
+    .common-info-table td {
+        padding-top: .5em;
+        padding-bottom: .5em;
+    }
+
+.two-inputs {
+    align-self: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.textbox-header {
+    width: 80%;
+}
+
+.textarea-information {
+    width: 80%;
+}

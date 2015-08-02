@@ -1,0 +1,507 @@
+﻿.box-sizing(@box-sizing) {
+    -ms-box-sizing: @box-sizing;
+    -moz-box-sizing: @box-sizing;
+    box-sizing: @box-sizing;
+    -webkit-box-sizing: @box-sizing;
+}
+
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; 
+          box-shadow: @shadow;
+}
+
+.border-radius(@radius) {
+    -ms-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+.opacity(@opacity: 1) {
+	@ieOpacity: @opacity * 100;
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieOpacity})";
+	filter: ~"alpha(opacity=@{ieOpacity})";	
+	opacity: @opacity;
+}
+.user-select(@argument: none) {
+    -webkit-user-select: @argument;
+    -moz-user-select: @argument;
+    -ms-user-select: @argument;
+    user-select: @argument;
+}
+.transition(@duration: 0.2s, @ease: ease-out) {
+    -webkit-transition: all @duration @ease;
+    -moz-transition: all @duration @ease;
+    -o-transition: all @duration @ease;
+    transition: all @duration @ease;
+}
+.transform(@transform) {
+   -webkit-transform: @transform;
+	-moz-transform: 	 @transform;
+	-ms-transform: 		 @transform;
+	-o-transform: 		 @transform;
+}
+.scale (@factor) {
+	-webkit-transform: scale(@factor);
+	-moz-transform: 	 scale(@factor);
+	-ms-transform: 		 scale(@factor);
+	-o-transform: 		 scale(@factor);
+}
+.transition(@transition: "0.3s ease-out") {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+
+.skew(@deg: "0deg") {
+    -webkit-transform: skew(@deg);
+    -o-transform: skew(@deg);
+    -moz-transform: skew(@deg);
+    transform: skew(@deg);
+}
+
+.clearfix() {
+    &:before, &:after {
+        content: ".";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+
+    &:after,
+    &:after {
+        clear: both;
+        float: none;
+    }
+
+    clear: both;
+}
+
+
+.container-fixed(@gutter: @grid-gutter-width) {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: (@gutter / 2);
+    padding-right: (@gutter / 2);
+    .clearfix();
+}
+
+// Creates a wrapper for a series of columns
+.make-row(@gutter: @grid-gutter-width) {
+    margin-left: (@gutter / -2);
+    margin-right: (@gutter / -2);
+     .clearfix();
+}
+
+// Generate the extra small columns
+.make-xs-column(@columns; @gutter: @grid-gutter-width) {
+    position: relative;
+    float: left;
+    width: percentage((@columns / @grid-columns));
+    min-height: 1px;
+    padding-left: (@gutter / 2);
+    padding-right: (@gutter / 2);
+}
+
+.make-xs-column-offset(@columns) {
+    margin-left: percentage((@columns / @grid-columns));
+}
+
+.make-xs-column-push(@columns) {
+    left: percentage((@columns / @grid-columns));
+}
+
+.make-xs-column-pull(@columns) {
+    right: percentage((@columns / @grid-columns));
+}
+
+// Generate the small columns
+.make-sm-column(@columns; @gutter: @grid-gutter-width) {
+    position: relative;
+    min-height: 1px;
+    padding-left: (@gutter / 2);
+    padding-right: (@gutter / 2);
+
+    @media (min-width: @screen-sm-min) {
+        float: left;
+        width: percentage((@columns / @grid-columns));
+    }
+}
+
+.make-sm-column-offset(@columns) {
+    @media (min-width: @screen-sm-min) {
+        margin-left: percentage((@columns / @grid-columns));
+    }
+}
+
+.make-sm-column-push(@columns) {
+    @media (min-width: @screen-sm-min) {
+        left: percentage((@columns / @grid-columns));
+    }
+}
+
+.make-sm-column-pull(@columns) {
+    @media (min-width: @screen-sm-min) {
+        right: percentage((@columns / @grid-columns));
+    }
+}
+
+// Generate the medium columns
+.make-md-column(@columns;
+@gutter: @grid-gutter-width) {
+    position: relative;
+    min-height: 1px;
+    padding-left: (@gutter / 2);
+    padding-right: (@gutter / 2);
+
+    @media (min-width: @screen-md-min) {
+        float: left;
+         width: percentage((@columns / @grid-columns));
+    }
+}
+
+.make-md-column-offset(@columns) {
+    @media (min-width: @screen-md-min) {
+        margin-left: percentage((@columns / @grid-columns));
+    }
+}
+
+.make-md-column-push(@columns) {
+    @media (min-width: @screen-md-min) {
+        left: percentage((@columns / @grid-columns));
+    }
+}
+
+.make-md-column-pull(@columns) {
+    @media (min-width: @screen-md-min) {
+        right: percentage((@columns / @grid-columns));
+    }
+}
+
+// Generate the large columns
+.make-lg-column(@columns; @gutter: @grid-gutter-width) {
+    position: relative;
+    min-height: 1px;
+    padding-left: (@gutter / 2);
+    padding-right: (@gutter / 2);
+
+    @media (min-width: @screen-lg-min) {
+        float: left;
+        width: percentage((@columns / @grid-columns));
+    }
+}
+
+.make-lg-column-offset(@columns) {
+    @media (min-width: @screen-lg-min) {
+        margin-left: percentage((@columns / @grid-columns));
+    }
+}
+
+.make-lg-column-push(@columns) {
+    @media (min-width: @screen-lg-min) {
+        left: percentage((@columns / @grid-columns));
+    }
+}
+
+.make-lg-column-pull(@columns) {
+    @media (min-width: @screen-lg-min) {
+        right: percentage((@columns / @grid-columns));
+    }
+}
+
+
+
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  .border-radius(@border-radius);
+}
+
+.rotate(@degrees) {
+    -webkit-transform: rotate(@degrees);
+    -ms-transform: rotate(@degrees);
+    -o-transform: rotate(@degrees);
+    transform: rotate(@degrees);
+}
+
+.translateY(@value) {
+    -webkit-transform: translateY(@value);
+    -ms-transform: translateY(@value);
+    -o-transform: translateY(@value);
+    transform: translateY(@value);
+}
+
+.translateZ(@value) {
+    -webkit-transform: translateZ(@value);
+    -ms-transform: translateZ(@value);
+    -o-transform: translateZ(@value);
+    transform: translateZ(@value);
+}
+
+.translate(@x; @y) {
+  -webkit-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y); // IE9 only
+       -o-transform: translate(@x, @y);
+          transform: translate(@x, @y);
+}
+.translate3d(@x; @y; @z) {
+  -webkit-transform: translate3d(@x, @y, @z);
+          transform: translate3d(@x, @y, @z);
+}
+.translateX(@value) {
+    -webkit-transform: translateX(@value);
+    -ms-transform: translateX(@value);
+    -o-transform: translateX(@value);
+    transform: translateX(@value);
+}
+
+//
+// Responsive: Utility classes
+// --------------------------------------------------
+
+
+// IE10 in Windows (Phone) 8
+//
+// Support for responsive views via media queries is kind of borked in IE10, for
+// Surface/desktop in split view and for Windows Phone 8. This particular fix
+// must be accompanied by a snippet of JavaScript to sniff the user agent and
+// apply some conditional CSS to *only* the Surface/desktop Windows 8. Look at
+// our Getting Started page for more information on this bug.
+//
+// For more information, see the following:
+//
+// Issue: https://github.com/twbs/bootstrap/issues/10497
+// Docs: http://getbootstrap.com/getting-started/#support-ie10-width
+// Source: http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+// Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+
+@-ms-viewport {
+  width: device-width;
+}
+
+
+// Visibility utilities
+// Note: Deprecated .visible-xs, .visible-sm, .visible-md, and .visible-lg as of v3.2.0
+.visible-xs,
+.visible-sm,
+.visible-md,
+.visible-lg {
+  .responsive-invisibility();
+}
+
+.visible-xs-block,
+.visible-xs-inline,
+.visible-xs-inline-block,
+.visible-xs-table-cell,
+.visible-sm-block,
+.visible-sm-inline,
+.visible-sm-inline-block,
+.visible-sm-table-cell,
+.visible-md-block,
+.visible-md-inline,
+.visible-md-inline-block,
+.visible-md-table-cell,
+.visible-lg-block,
+.visible-lg-inline,
+.visible-lg-inline-block,
+.visible-lg-table-cell {
+    display: none !important;
+}
+
+.visible-xs {
+  @media (max-width: @screen-xs-max) {
+    .responsive-visibility();
+  }
+}
+.visible-xs-block {
+  @media (max-width: @screen-xs-max) {
+    display: block !important;
+  }
+}
+.visible-xs-inline {
+  @media (max-width: @screen-xs-max) {
+    display: inline !important;
+  }
+}
+.visible-xs-inline-block {
+  @media (max-width: @screen-xs-max) {
+    display: inline-block !important;
+  }
+}
+.visible-xs-table-cell {
+  @media (max-width: @screen-xs-max) {
+    display: table-cell !important;
+  }
+}
+
+.visible-sm {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .responsive-visibility();
+  }
+}
+.visible-sm-block {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    display: block !important;
+  }
+}
+.visible-sm-inline {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    display: inline !important;
+  }
+}
+.visible-sm-inline-block {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    display: inline-block !important;
+  }
+}
+.visible-sm-tabke-cell {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    display: table-cell !important;
+  }
+}
+
+.visible-md {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    .responsive-visibility();
+  }
+}
+.visible-md-block {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    display: block !important;
+  }
+}
+.visible-md-inline {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    display: inline !important;
+  }
+}
+.visible-md-inline-block {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    display: inline-block !important;
+  }
+}
+.visible-md-table-cell {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    display: table-cell !important;
+  }
+}
+
+.visible-lg {
+  @media (min-width: @screen-lg-min) {
+    .responsive-visibility();
+  }
+}
+.visible-lg-block {
+  @media (min-width: @screen-lg-min) {
+    display: block !important;
+  }
+}
+.visible-lg-inline {
+  @media (min-width: @screen-lg-min) {
+    display: inline !important;
+  }
+}
+.visible-lg-inline-block {
+  @media (min-width: @screen-lg-min) {
+    display: inline-block !important;
+  }
+}
+.visible-lg-table-cell {
+  @media (min-width: @screen-lg-min) {
+    display: table-cell !important;
+  }
+}
+
+.hidden-xs {
+  @media (max-width: @screen-xs-max) {
+    .responsive-invisibility();
+  }
+}
+.hidden-sm {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .responsive-invisibility();
+  }
+}
+.hidden-md {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    .responsive-invisibility();
+  }
+}
+.hidden-lg {
+  @media (min-width: @screen-lg-min) {
+    .responsive-invisibility();
+  }
+}
+
+
+// Print utilities
+//
+// Media queries are placed on the inside to be mixin-friendly.
+
+// Note: Deprecated .visible-print as of v3.2.0
+.visible-print {
+  .responsive-invisibility();
+
+  @media print {
+    .responsive-visibility();
+  }
+}
+.visible-print-block {
+  display: none !important;
+
+  @media print {
+    display: block !important;
+  }
+}
+.visible-print-inline {
+  display: none !important;
+
+  @media print {
+    display: inline !important;
+  }
+}
+.visible-print-inline-block {
+  display: none !important;
+
+  @media print {
+    display: inline-block !important;
+  }
+}
+
+.hidden-print {
+  @media print {
+    .responsive-invisibility();
+  }
+}
+// Responsive utilities
+
+//
+// More easily include all the states for responsive-utilities.less.
+.responsive-visibility() {
+  display: block !important;
+  table&  { display: table; }
+  tr&     { display: table-row !important; }
+  th&,
+  td&     { display: table-cell !important; }
+}
+
+.responsive-invisibility() {
+  display: none !important;
+}
+
+
+.gradient (@startColor: rgba(0,0,0,0.75), @endColor: rgba(0,0,0,0.25)) {
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@startColor, endColorstr=@endColor,GradientType=0 ); 
+     background-color: @startColor;
+    background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    background: -webkit-linear-gradient(top, @startColor, @endColor);
+    background: -moz-linear-gradient(top, @startColor, @endColor);
+    background: -ms-linear-gradient(top, @startColor, @endColor);
+    -ms-filter: e("gradient(start=@ieStartColor,end=@ieEndColor)");
+    background: -o-linear-gradient(top, @startColor, @endColor);
+    background: -linear-gradient(top, @startColor, @endColor);
+   
+
+}
+
