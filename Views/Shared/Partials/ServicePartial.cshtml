@@ -1,0 +1,42 @@
+﻿@model NinjaAdmin.Models.ViewModels.ServiceViewModel
+
+<div class="b-service b-section" ng-class="{'b-service_active' : servicesCtrl.visible == @(ViewData["index"])}">
+    <div class="b-service__row">
+        <div class="b-service__header">
+            <div class="b-section__content">
+                <h3 class="b-service__heading text-center">@Model.Name</h3>
+                <div class="text-center">
+                    <i>
+                        @Model.Header
+                    </i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="b-service__row">
+        <div class="b-service__body" style="background-image: url(/Content/images/services/bg_@(ViewData["index"]).jpg)">
+            <div class="b-section__content b-service__content-container">
+                <div class="b-service__content-row">
+                    <div class="b-service__content-cell">
+                        @if (Model.ListOfActions != null && Model.ListOfActions.Count > 0)
+                        {
+                            <ul class="list-unstyled list-styled text-light">
+                                @foreach (var action in Model.ListOfActions)
+                                {
+                                    <li>@action</li>
+                                }
+                            </ul>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Description))
+                        {
+                            <p class="b-service__conclusion b-decorated-paragraph text-semibold">
+                                @Html.Raw(@Model.Description.Replace(Environment.NewLine, "</br>"))
+                            </p>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

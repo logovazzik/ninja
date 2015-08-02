@@ -1,0 +1,35 @@
+﻿@model NinjaAdmin.Models.ViewModels.CommonViewModel
+<div class="modal fade " id="order_service" tabindex="-1">
+    <div class="modal-dialog b-order-service-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-close">
+
+
+
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span data-dismiss="modal">
+
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 82 80.9" enable-background="new 0 0 82 80.9" xml:space="preserve">
+                                <g>
+                                    <line fill="none" stroke="#FF5900" stroke-width="8" stroke-miterlimit="10" x1="3.3" y1="3" x2="78.5" y2="78.2" />
+                                    <line fill="none" stroke="#FF5900" stroke-width="8" stroke-miterlimit="10" x1="78.5" y1="3" x2="3.3" y2="78.2" />
+                                </g>
+                            </svg>
+
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("Partials/OrderForm")
+                <div class="b-order-service-modal__contacts">
+                    <a href="tel:@Model.Phone"><strong>@Model.Phone</strong></a>
+                    <br />
+                    <a href="mailto:@Model.Mail"><strong><i>@Model.Mail</i></strong></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

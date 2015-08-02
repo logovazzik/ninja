@@ -1,0 +1,26 @@
+﻿<form name="orderService" class="b-form b-footer__form" 
+      ng-controller="OrderServiceController as OrderServiceCtrl">
+    <div class="b-form-group">
+        <input type="text" class="b-form-control"
+               name="name"
+               required=""
+               ng-model="OrderServiceCtrl.name"
+               ng-placeholder="{ 'placeholder': 'Представьтесь', 'placeholderActive' : 'placeholder-active'}" />
+
+    </div>
+    <div class="b-form-group">
+        <input type="text" class="b-form-control" id="contacts"
+               name="contacts"
+               required=""
+               ng-model="OrderServiceCtrl.contacts"
+               ng-placeholder="{ 'placeholder': 'Ваш контакт', 'placeholderActive' : 'placeholder-active'}"
+               />
+    </div>
+    <div class="b-form-group b-form-group_feedback-submit text-center">
+        <div class="b-rounded b-rounded_button">
+            <button class="b-button" ng-disabled="orderService.$invalid" ng-click="OrderServiceCtrl.submit()">
+                <span class="b-button__text">Заказать услугу</span>
+            </button>
+        </div>
+    </div>
+</form>

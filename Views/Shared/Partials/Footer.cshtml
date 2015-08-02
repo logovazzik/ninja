@@ -1,0 +1,18 @@
+﻿@model NinjaAdmin.Models.ViewModels.CommonViewModel
+
+<div class="b-section b-footer">
+    <div class="b-section__content ">
+        <div class="b-footer__content text-center">
+            <h2 class="b-footer__heading b-section__heading text-nowrap"><strong>ОСТАЛИСЬ ВОПРОСЫ?</strong></h2>
+            <i class="b-footer__help text-nowrap">Мы с удовольствием на них ответим!</i>
+           
+            @Html.Partial("Partials/OrderForm")
+            
+            <div class="b-footer__contacts">
+                <a href="tel:@Model.Phone"><strong>@Model.Phone</strong></a>
+                <br/>
+                <a href="mailto:@Model.Mail"><strong><i>@Model.Mail</i></strong></a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+﻿@model NinjaAdmin.Models.ViewModels.GeneralViewModel
+
+<div class="b-section b-services" ng-controller="ServicesController  as servicesCtrl" ng-services>
+    <i class="b-services__triangle b-services__triangle_left"
+       ng-triangle-decoration="{'border-right-width':  width * 0.46, 'border-top-width' : width / 6 }"></i>
+    <i class="b-services__triangle b-services__triangle_right"
+       ng-triangle-decoration="{'border-right-width':  width * 0.54, 'border-bottom-width' : width / 7 }"></i>
+    <i class="b-services__triangle b-services__triangle_bottom"
+       ng-triangle-decoration="{'border-left-width': width, 'border-top-width' : width / 20 }"></i>
+    <div class="b-section__content b-services-list-container">
+        <h2 class="b-services__heading b-section__heading  text-center"><strong>ЧТО МЫ ДЕЛАЕМ?</strong></h2>
+        <div class="b-services-list">
+            <div class="b-services-list-item" ng-click="servicesCtrl.openService(1)">
+                <div class="b-services-list-item__image-cell">
+
+
+                    @Html.Partial("Partials/Svg/Icons/Hoverable/Icon_4")
+
+                </div>
+                <div class="b-services-list-item__text text-center">
+                    Разработка и создание<br />
+                    продающих сайтов
+                </div>
+            </div>
+            <div class="b-services-list-item" ng-click="servicesCtrl.openService(2)">
+                <div class="b-services-list-item__image-cell">
+
+
+                    @Html.Partial("Partials/Svg/Icons/Hoverable/Icon_2")
+
+                </div>
+                <div class="b-services-list-item__text text-center">
+                    Контекстная <br />реклама
+                </div>
+            </div>
+            <div class="b-services-list-item " ng-click="servicesCtrl.openService(3)">
+                <div class="b-services-list-item__image-cell">
+
+
+                    @Html.Partial("Partials/Svg/Icons/Hoverable/Icon_5")
+
+                </div>
+                <div class="b-services-list-item__text text-center">
+                    Продвижение<br /> сайтов
+                </div>
+            </div>
+            <div class="b-services-list-item" ng-click="servicesCtrl.openService(4)">
+                <div class="b-services-list-item__image-cell">
+
+                    @Html.Partial("Partials/Svg/Icons/Hoverable/Icon_6")
+                </div>
+                <div class="b-services-list-item__text text-center">
+                    Медийная <br />реклама
+                </div>
+            </div>
+            <div class="b-services-list-item" ng-click="servicesCtrl.openService(5)">
+                <div class="b-services-list-item__image-cell">
+
+                    @Html.Partial("Partials/Svg/Icons/Hoverable/Icon_3")
+                </div>
+                <div class="b-services-list-item__text text-center">
+                    Социальные<br />медиа
+                </div>
+            </div>
+            <div class="b-services-list-item" ng-click="servicesCtrl.openService(6)">
+                <div class="b-services-list-item__image-cell">
+
+                    @Html.Partial("Partials/Svg/Icons/Hoverable/Icon_1")
+                </div>
+                <div class="b-services-list-item__text text-center">
+                    Аналитика
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="b-section b-services-nav b-services-nav-reserved hidden-xs hidden-sm">
+        <div class="b-section__content">
+            @Html.Partial("Partials/ServiceNavList")
+
+        </div>
+    </div>
+    <div class="b-section b-services-nav hidden-xs hidden-sm"
+         ng-show="servicesCtrl.visible"
+         ng-services-nav>
+        <div class="b-section__content">
+            @Html.Partial("Partials/ServiceNavList")
+        </div>
+    </div>
+    @{
+
+        //потом удалить,сделано исключительно для простоты изменения только одном partial верстки, нежели в каждом
+        for (var i = 0; i < Model.ServiceInfo.Count(); ++i)
+        {
+            @Html.Partial("Partials/ServicePartial", Model.ServiceInfo[i], new ViewDataDictionary() { { "index", i + 1 } })
+        }
+    }
+
+    <div class="b-section__content b-why-we-container">
+        <div class=" b-why-we-row">
+            <div class="b-why-we-cell">
+                <h2 class=" b-services__heading b-section__heading text-center b-mt13">
+                    <strong>ПОЧЕМУ МЫ?</strong>
+                </h2>
+                <p class="b-why-we-text text-semibold">
+                    @*Расширяем присутствие бренда на рынке<br />
+                        Превращаем посетителей в покупателей<br />
+                        Интегрируем маркетинг и находим покупателей<br />
+                        Готовим коктейли из цифровых технологий для ваших покупателей*@
+                    @Html.Raw(Model.CommonInfo.WhyUs.Replace(Environment.NewLine, "</br>"))
+                </p>
+                <div class="text-center">
+                    <div class="b-rounded b-rounded_button">
+                        <button class="b-button" data-toggle="modal" data-target="#order_service">
+                            <span class="b-button__text">Заказать услугу</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

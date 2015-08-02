@@ -1,0 +1,11 @@
+﻿@model NinjaAdmin.Models.ViewModels.GeneralViewModel
+
+@{
+    ViewBag.Title = "Ninjas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("Partials/Header", Model.CommonInfo)
+@Html.Partial("Partials/Modal", Model.CommonInfo)
+@Html.Partial("Partials/Services", Model)
+@Html.Partial("Partials/Works", Model.PortfolioInfo)
+@Html.Partial("Partials/Footer", Model.CommonInfo)

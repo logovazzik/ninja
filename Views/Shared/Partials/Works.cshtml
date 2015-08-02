@@ -1,0 +1,166 @@
+﻿@model List<NinjaAdmin.Models.ViewModels.PortfolioViewModels>
+
+<div class="b-section b-works">
+    <div class="b-section__content ">
+        <h2 class="b-works__heading b-section__heading color-black text-center"><strong>НАШИ РАБОТЫ</strong></h2>
+        <div class="b-works-grid">
+            @for (var i = 0; i < Model.Count(); ++i)
+            {
+                if (i % 2 == 0)
+                {
+                    <div class="b-works-item row">
+                        <div class="col-xs-12">
+                            <hr class="b-works-item__separator" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6  b-works-item__image-col">
+                            <img src="@string.Concat("/CMSData/PortfolioIcons/",Model[i].IconPath)" class="b-works-item__image" />
+                        </div>
+                        <div class="col-xs-12  col-sm-6 ">
+                            <table cellpadding="0" cellspacing="0" border="0" class="b-services-table">
+                                <tr>
+                                    <td class="b-services-table__cell">
+                                        <ul class="list-unstyled b-services-icons">
+                                            @if (Model[i].Services.Contains(1))
+                                            {
+                                                <li class=" b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_1")
+                                                </li>
+                                            }
+                                            @if (Model[i].Services.Contains(2))
+                                            {
+                                                <li class="b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_2")
+                                                </li>
+                                            }
+                                            @if (Model[i].Services.Contains(3))
+                                            {
+                                                <li class="b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_3")
+                                                </li>
+                                            }
+                                            @if (Model[i].Services.Contains(4))
+                                            {
+                                                <li class="b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_4")
+                                                </li>
+                                            }
+                                            @if (Model[i].Services.Contains(5))
+                                            {
+                                                <li class="b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_5")
+
+                                                </li>
+                                            }
+                                            @if (Model[i].Services.Contains(6))
+                                            {
+                                                <li class="b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_6")
+                                                </li>
+                                            }
+                                        </ul>
+                                    </td>
+                                    <td class="b-services-table__cell">
+                                        <dl class="b-procedures">
+                                            @for (int d = 0; d < Model[i].Actions.Count; ++d)
+                                            {
+                                                if (d % 2 == 0)
+                                                {
+                                                    <dd class="b-procedures__result">
+                                                        @Model[i].Actions[d]
+                                                    </dd>
+                                                }
+                                                else
+                                                {
+                                                    <dt class="b-procedures__procedure">
+                                                        @Model[i].Actions[d]
+                                                    </dt>
+                                                }
+                                            }
+                                        </dl>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="b-works-item row">
+                        <div class="col-xs-12">
+                            <hr class="b-works-item__separator" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6 b-works-item__image-col">
+                            <img src="@string.Concat("/CMSData/PortfolioIcons/",Model[i].IconPath)" class="b-works-item__image" />
+                        </div>
+                        <div class="col-xs-12  col-sm-6">
+                            <table cellpadding="0" cellspacing="0" border="0" class="b-services-table">
+                                <tr>
+                                    <td class="b-services-table__cell">
+                                        <ul class="list-unstyled b-services-icons">
+                                            @if (Model[i].Services.Contains(1))
+                                            {
+                                                <li class=" b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_1")
+                                                </li>
+                                            }
+                                            @if (Model[i].Services.Contains(2))
+                                            {
+                                                <li class="b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_2")
+                                                </li>
+                                            }
+                                            @if (Model[i].Services.Contains(3))
+                                            {
+                                                <li class="b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_3")
+                                                </li>
+                                            }
+                                            @if (Model[i].Services.Contains(4))
+                                            {
+                                                <li class="b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_4")
+                                                </li>
+                                            }
+                                            @if (Model[i].Services.Contains(5))
+                                            {
+                                                <li class="b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_5")
+
+                                                </li>
+                                            }
+                                            @if (Model[i].Services.Contains(6))
+                                            {
+                                                <li class="b-services-icons__list-item">
+                                                    @Html.Partial("Partials/Svg/Icons/Icon_6")
+                                                </li>
+                                            }
+                                        </ul>
+                                    </td>
+                                    <td class="b-services-table__cell">
+                                        <dl class="b-procedures">
+                                            @for (int d = 0; d < Model[i].Services.Count; ++d)
+                                            {
+                                                if (d % 2 == 0)
+                                                {
+                                                    <dd class="b-procedures__result">
+                                                        @Model[i].Actions[d]
+                                                    </dd>
+                                                }
+                                                else
+                                                {
+                                                    <dt class="b-procedures__procedure">
+                                                        @Model[i].Actions[d]
+                                                    </dt>
+                                                }
+                                            }
+                                        </dl>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
