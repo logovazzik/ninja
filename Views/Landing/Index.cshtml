@@ -4,8 +4,40 @@
     ViewBag.Title = "Ninjas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="b-section b-header-section"
+     image-responsive="{
+                             default : {
+                                 src:'/Content/images/header-background_m.png'
+                             },
+
+                             992 : {
+                                 src: '/Content/images/header-background.png',
+                             }
+                 }">
+
+    <i class="b-header-section__triangle b-header-section__triangle_left"
+       ng-triangle-decoration="{'border-top-width': width /7, 'border-left-width' : width * 0.54}"></i>
+    <i class="b-header-section__triangle b-header-section__triangle_right"
+       ng-triangle-decoration="{'border-bottom-width': width/6, 'border-left-width' : width  * 0.46 }"></i>
+
+    <div class="b-section__content ">
+        <h2 class="b-header-section__heading b-section__heading  text-center">
+            <strong>
+                ЗАСТАВЛЯЕМ РАБОТАТЬ<br class="visible-xs visible-sm" />
+                КАЖДЫЙ КЛИК
+            </strong>
+        </h2>
+        <div class="text-center">
+            <div class="b-rounded b-rounded_button">
+                <button class="b-button" data-toggle="modal" data-target="#order_service">
+                    <span class="b-button__text">Заказать услугу</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 @Html.Partial("Partials/Header", Model.CommonInfo)
 @Html.Partial("Partials/Modal", Model.CommonInfo)
-@Html.Partial("Partials/Services", Model)
-@Html.Partial("Partials/Works", Model.PortfolioInfo)
-@Html.Partial("Partials/Footer", Model.CommonInfo)
+    @Html.Partial("Partials/Services", Model)
+    @Html.Partial("Partials/Works", Model.PortfolioInfo)
+    @Html.Partial("Partials/Footer", Model.CommonInfo)
