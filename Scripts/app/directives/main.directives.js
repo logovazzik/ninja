@@ -1,15 +1,15 @@
 ﻿
 (function () {
-   
+
     var Placeholder = function($timeout) {
         return {
             restrict: "A",
             scope: {
                 settings: "=ngPlaceholder"
-    },
+            },
 
-            link: function (scope, $element, attrs, ctrl) {
-              
+            link: function(scope, $element, attrs, ctrl) {
+
                 var settings = scope.settings;
                 if (Modernizr && Modernizr.input && Modernizr.input.placeholder) {
                     $element.attr("placeholder", settings.placeholder);
@@ -19,15 +19,49 @@
                     $element.addClass(settings.placeholderActive);
                     $element.val(settings.placeholder);
                 }, 500);
-                
+
                 $element.on("blur.placeholder", function() {
                     $element.val().trim() == "" && $element.val(settings.placeholder) && $element.addClass(settings.placeholderActive);
                 }).on("focus.placeholder", function() {
-                    $element.val() == settings.placeholder && $element.val("") &&  $element.removeClass(settings.placeholderActive);
+                    $element.val() == settings.placeholder && $element.val("") && $element.removeClass(settings.placeholderActive);
                 });
             }
         };
     };
+
+    var CloneDimensions = function () {
+        return {
+            restrict: "A",
+            scope: {
+                cloneOf: "=cloneDimensions"
+            },
+
+            link: function (scope, $element, attrs, ctrl) {
+
+                var $cloneOf = angular.element(scope.cloneOf.selector),
+                    $window = angular.element(window);
+               
+                if (!$cloneOf.length) return;
+               
+
+                var _cloneDimensions = function() {
+                    $element.width($cloneOf.width());
+                    $element.height($cloneOf.height());
+                }
+                $window.on("resize.cloneDimensions", function() {
+                    _cloneDimensions();
+                });
+                $element.on("cloneDimensions", function() {
+                    _cloneDimensions();
+                });
+
+                _cloneDimensions();
+
+            }
+        };
+    };
+
+
     var LandingDirective = function () {
         return {
             restrict: "A",
@@ -37,7 +71,7 @@
                     $document = angular.element(document),
                     $body = angular.element("body"),
                     headerModalOpenedClass = "fixed-modal-opened",
-                    $fixed = angular.element(".b-header__inner, .b-services-nav"),
+                    $fixed = angular.element(".b-header, .b-services-nav"),
 
                     _getScrollBarWidth = function() {
                         var scrollDiv = document.createElement('div');
@@ -76,6 +110,7 @@
 
 
     angular.module("landing.directives").directive("ngLanding", LandingDirective)
-    .directive("ngPlaceholder", ["$timeout", Placeholder]);
+    .directive("ngPlaceholder", ["$timeout", Placeholder])
+    .directive("cloneDimensions", [CloneDimensions]);
 
 })();
