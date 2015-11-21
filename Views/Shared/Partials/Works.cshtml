@@ -4,7 +4,7 @@
     <div class="b-section__content ">
         <h2 class="b-works__heading b-section__heading color-black text-center"><strong>НАШИ РАБОТЫ</strong></h2>
         <div class="b-works-grid">
-            @for (var i = 0; i < Model.Count(); ++i)
+            @for (var i = 0; i < Model.Count(); i++)
             {
                 if (i % 2 == 0)
                 {
@@ -138,7 +138,7 @@
                                     </td>
                                     <td class="b-services-table__cell">
                                         <dl class="b-procedures">
-                                            @for (int d = 0; d < Model[i].Services.Count; ++d)
+                                            @for (int d = 0; d < Model[i].Actions.Count; d++)
                                             {
                                                 if (d % 2 == 0)
                                                 {
