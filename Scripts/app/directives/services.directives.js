@@ -88,14 +88,14 @@
             link: function(scope, $element, attrs, ctrl) {
                 var $trigger = angular.element(scope.options.trigger),
                     toggleClass = scope.options.openClass;
-                $element.on("click.menu-click touchstart.menu-touch", function (e) {
+                $element.on("click.menu-click", function (e) {
                     e.stopPropagation();
                 });
-                $trigger.on("click.menu-toggle touchstart.menu-toggle", function(e) {
+                $trigger.on("click.menu-toggle", function(e) {
                     $element.toggleClass(toggleClass);
                     e.stopPropagation();
                 });
-                angular.element(document).on("click.menu-close touchstart.menu-close", function() {
+                angular.element(document).on("click.menu-close", function() {
                     $element.removeClass(toggleClass);
                 });
 
