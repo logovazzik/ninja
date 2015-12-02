@@ -20,6 +20,25 @@
                     change  : function(date) {
                         if (scope.options.input) {
                             angular.element(scope.options.input).val(date).triggerHandler("change");
+
+                            skip = 0;
+
+                            var category = GetAttribute("category");
+
+                            var requestData = {
+                                Category: category,
+                                formattedDate: date, 
+                                Skip: skip
+                            };
+
+                            $.ajax({
+                                url: '/Blog/FilteredIndex',
+                                type: 'GET',
+                                data: requestData
+                            })
+                            .success(function (result) {
+                                $("#articlesList").html(result);
+                            });
                         }
                     }
                 }, scope.options || {}));

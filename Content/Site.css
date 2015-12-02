@@ -82,3 +82,11 @@ input[type="checkbox"].input-validation-error {
 .textarea-information {
     width: 80%;
 }
+
+.textarea-blog {
+    width: 100%;
+}
+
+.blog-picture-uploader {
+    margin-bottom: 10px;
+}

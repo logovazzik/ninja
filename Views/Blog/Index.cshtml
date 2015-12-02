@@ -1,15 +1,18 @@
-﻿@model NinjaAdmin.Models.ViewModels.GeneralViewModel
+﻿@model NinjaAdmin.Models.ViewModels.MainBlogNodel
 @{
-    ViewBag.Title = "Blog";
+    ViewBag.Title = "Блог";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@Html.Partial("Partials/Header", Model.CommonInfo, new ViewDataDictionary{{"class", "b-header_green"}})
+
+@Html.Partial("Partials/Header", Model.CommonInfo, new ViewDataDictionary { { "class", "b-header_green" } })
 <div class="b-header-clone" clone-dimensions="{selector : '.b-header'}">
 
 </div>
+<input type="hidden" name="hiddenCategory" id="hiddenCategory" value="@ViewBag.Category" />
+<input type="hidden" name="hiddenFilterMonth" id="hiddenFilterMonth" value="@ViewBag.filterMonth" />
+<input type="hidden" name="hiddenFilterYear" id="hiddenFilterYear" value="@ViewBag.filterYear" />
 
 <div class="b-section b-blog">
-  
     <div class="b-section__content b-blog__content">
         <div class="b-breadcrumbs">
             <a href="/">Главная</a>&nbsp;>&nbsp;Блог
@@ -28,63 +31,50 @@
                                 </button>
                                 <div class="b-dropdown__menu" onclick="event.stopPropagation && event.stopPropagation() || (event.cancelBubble= true)">
                                     <ul class=" list-unstyled b-filters-list">
-                                        <li class="b-filters-list__list-item b-checkbox">
-                                            <input type="checkbox" name="search_category"
-                                                   class="b-checkbox__input" id="search_category_1" />
-                                            <label class="b-checkbox__label" for="search_category_1">Категория 1</label>
-
-                                        </li>
-                                        <li class="b-filters-list__list-item b-checkbox">
-                                            <input type="checkbox" name="search_category"
-                                                   class="b-checkbox__input" id="search_category_2" />
-                                            <label class="b-checkbox__label" for="search_category_2">Категория 2</label>
-
-                                        </li>
-                                        <li class="b-filters-list__list-item b-checkbox">
-                                            <input type="checkbox" name="search_category"
-                                                   class="b-checkbox__input" id="search_category_3" />
-                                            <label class="b-checkbox__label" for="search_category_3">Очень длинная Категория 3</label>
-
-                                        </li>
+                                        @foreach (var item in ViewBag.CategoriesForSearch)
+                                        {
+                                            <li class="b-filters-list__list-item b-checkbox">
+                                                <a href="/Blog?category=@item.Id" class="b-checkbox__label">@item.Name</a>
+                                            </li>
+                                        }
                                     </ul>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="b-blog-filters__item">
-                            <div class="b-dropdown">
-                                <button class="b-button b-arrow-button b-dropdown-button" data-target="#" data-toggle="dropdown">
-                                    <span class="b-button__text b-arrow-button__text">Тэг</span>
-                                    <span class="b-arrow-button__icon b-dropdown-button__icon">
-                                        @Html.Partial("Partials/Svg/Icons/ArrowIcon", null, new ViewDataDictionary { { "class", "b-arrow-button__arrow" } })
-                                    </span>
-                                </button>
-                                <div class="b-dropdown__menu" onclick="event.stopPropagation && event.stopPropagation() || (event.cancelBubble= true)">
-                                    <ul class=" list-unstyled b-filters-list">
-                                        <li class="b-filters-list__list-item b-checkbox">
-                                            <input type="checkbox" name="search_tag"
-                                                   class="b-checkbox__input" id="search_tag_1" />
-                                            <label class="b-checkbox__label" for="search_tag_1">Тэг 1</label>
+                        @*<div class="b-blog-filters__item">
+                                <div class="b-dropdown">
+                                    <button class="b-button b-arrow-button b-dropdown-button" data-target="#" data-toggle="dropdown">
+                                        <span class="b-button__text b-arrow-button__text">Тэг</span>
+                                        <span class="b-arrow-button__icon b-dropdown-button__icon">
+                                            @Html.Partial("Partials/Svg/Icons/ArrowIcon", null, new ViewDataDictionary { { "class", "b-arrow-button__arrow" } })
+                                        </span>
+                                    </button>
+                                    <div class="b-dropdown__menu" onclick="event.stopPropagation && event.stopPropagation() || (event.cancelBubble= true)">
+                                        <ul class=" list-unstyled b-filters-list">
+                                            <li class="b-filters-list__list-item b-checkbox">
+                                                <input type="checkbox" name="search_tag"
+                                                       class="b-checkbox__input" id="search_tag_1" />
+                                                <label class="b-checkbox__label" for="search_tag_1">Тэг 1</label>
 
-                                        </li>
-                                        <li class="b-filters-list__list-item b-checkbox">
-                                            <input type="checkbox" name="search_tag"
-                                                   class="b-checkbox__input" id="search_tag_2" />
-                                            <label class="b-checkbox__label" for="search_tag_2">Категория 2</label>
+                                            </li>
+                                            <li class="b-filters-list__list-item b-checkbox">
+                                                <input type="checkbox" name="search_tag"
+                                                       class="b-checkbox__input" id="search_tag_2" />
+                                                <label class="b-checkbox__label" for="search_tag_2">Категория 2</label>
 
-                                        </li>
-                                        <li class="b-filters-list__list-item b-checkbox">
-                                            <input type="checkbox" name="search_tag"
-                                                   class="b-checkbox__input" id="search_tag_3" />
-                                            <label class="b-checkbox__label" for="search_tag_3">Очень длинная Категория 3</label>
+                                            </li>
+                                            <li class="b-filters-list__list-item b-checkbox">
+                                                <input type="checkbox" name="search_tag"
+                                                       class="b-checkbox__input" id="search_tag_3" />
+                                                <label class="b-checkbox__label" for="search_tag_3">Очень длинная Категория 3</label>
 
-                                        </li>
-                                    </ul>
+                                            </li>
+                                        </ul>
 
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        
+                            </div>*@
+
                         <div class="b-blog-filters__item">
                             <div class="b-dropdown">
                                 <button class="b-button b-arrow-button b-dropdown-button" data-target="#" data-toggle="dropdown">
@@ -93,16 +83,14 @@
                                         @Html.Partial("Partials/Svg/Icons/ArrowIcon", null, new ViewDataDictionary { { "class", "b-arrow-button__arrow" } })
                                     </span>
                                 </button>
-                                <div class="b-dropdown__menu" ng-filter-calendar="{'input': '#filter_date'}" onclick="event.stopPropagation && event.stopPropagation() || (event.cancelBubble= true)">
+                                <div id="CalendarDiv" class="b-dropdown__menu" ng-filter-calendar="{'input': '#filter_date'}" onclick="event.stopPropagation && event.stopPropagation() || (event.cancelBubble= true)">
                                     <input type="text" style="visibility: hidden; position: absolute" id="filter_date" />
 
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
 
                 <div class="b-blog-header-table__cell b-blog-header-table__cell_r hidden-xs">
                     @Html.Partial("Partials/Subscribe")
@@ -112,52 +100,24 @@
         </div>
         <div class="b-blog-articles">
             <h2 class="b-blog-articles__heading">ПОСЛЕДНИЕ ЗАПИСИ</h2>
-            <div class="b-blog-articles-list">
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
-                <div class="b-blog-articles-list__item">
-                    @Html.Partial("Partials/ArticlePreview")
-                </div>
+            <div id="articlesList" class="b-blog-articles-list">
+                @foreach (var article in Model.Articles)
+                {
+                    <div class="b-blog-articles-list__item">
+                        @Html.Partial("Partials/ArticlePreview", article)
+                    </div>
+                }
             </div>
-            
-            <div class="text-center">
-                <a href="javascript:void(0)" class="b-blog-articles__more">Еще сообщения</a>
+
+            <div id="articlesAnchor" class="text-center">
+                <a href="#articlesAnchor" onclick="LoadMoreArticles();" class="b-blog-articles__more">Еще сообщения</a>
             </div>
             <div class="visible-xs">
-            @Html.Partial("Partials/Subscribe")</div>
+                @Html.Partial("Partials/Subscribe")
+            </div>
         </div>
 
     </div>
 
 </div>
-
-
 @Html.Partial("Partials/Footer", Model.CommonInfo)

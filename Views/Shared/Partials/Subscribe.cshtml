@@ -2,9 +2,9 @@
     <h3 class="b-subscribe__heading">ПОДПИСАТЬСЯ НА БЛОГ</h3>
     
     <div class="b-button b-subscribe-button ">
-        <input type="text" ng-placeholder="{ 'placeholder': 'email', 'placeholderActive' : 'placeholder-active'}"
+        <input id="subscribeEmail" type="text" ng-placeholder="{ 'placeholder': 'email', 'placeholderActive' : 'placeholder-active'}"
                class="b-subscribe-button__input" />    
-        <button class="b-subscribe-button__send">
+        <button class="b-subscribe-button__send" onclick="SubscribeEmail($('#subscribeEmail').val());">
             @Html.Partial("Partials/Svg/Icons/TriangleIcon", null, new ViewDataDictionary { { "class", "b-subscribe-button__send-icon" } })
         </button>
     </div>

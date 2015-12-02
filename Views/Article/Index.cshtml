@@ -1,10 +1,14 @@
-﻿
-@model NinjaAdmin.Models.ViewModels.GeneralViewModel
+﻿@model NinjaAdmin.Models.ViewModels.ArticleBlogModel
 @{
     ViewBag.Title = "Blog";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("Partials/Header", Model.CommonInfo, new ViewDataDictionary { { "class", "b-header_green" } })
+
+<meta name="title" content="@Model.Article.Theme" />
+<meta name="description" content="string.Concat(blogArticle.FirstPartText.Split('.').FirstOrDefault(), '.')" />
+<link rel="image_src" href="@Model.Article.CenterPicturePath" />
+
 <div class="b-header-clone" clone-dimensions="{selector : '.b-header'}">
 
 </div>
@@ -16,20 +20,25 @@
             <a href="/">Главная</a>&nbsp;>&nbsp;Блог
         </div>
         <div class="b-article">
-            <div class="b-article__main-image-wrapper">
-                <img src="http://aledo-pro.ru/images/solutions/img_5500337688910.png" class="b-article__main-image" />
-            </div>
-
+            @if (!string.IsNullOrEmpty(Model.Article.HeadPicturePath))
+            {
+                <div class="b-article__main-image-wrapper">
+                    <img src="@Model.Article.HeadPicturePath" class="b-article__main-image" />
+                </div>
+            }
             <div class="row">
                 <div class="col-xs-12 col-sm-7">
-                    <h1 class="b-article__heading">КАК ПРОДВИГАТЬ АККАУНТ В СОЦСЕТЯХ</h1>
+                    <h1 class="b-article__heading">@Model.Article.Theme</h1>
                     <dl class="b-article-info">
                         <dt class="b-article-info__name">Дата:</dt>
-                        <dd class="b-article-info__value">12.06.2022</dd>
+                        <dd class="b-article-info__value">@Model.Article.CreationDate.ToShortDateString()</dd>
                         <dt class="b-article-info__name">Категория:</dt>
-                        <dd class="b-article-info__value">12.06.2022</dd>
-                        <dt class="b-article-info__name">Тег:</dt>
-<dd class="b-article-info__value">Экономика, Экономикааа, Экономикаааа, Экономика, Экономикааа, Экономикаааа,Экономика, Экономикааа, Экономикаааа,Экономика, Экономикааа, Экономикаааа</dd>
+                        <dd class="b-article-info__value">@Model.CategoryName</dd>
+                        @if (!string.IsNullOrEmpty(Model.Article.Tags))
+                        {
+                            <dt class="b-article-info__name">Тег:</dt>
+                            <dd class="b-article-info__value">@Model.Article.Tags</dd>
+                        }
                     </dl>
                 </div>
                 <div class="hidden-xs col-sm-4 col-sm-offset-1">
@@ -39,57 +48,72 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-7">
                     <div class="b-article__text">
-                        Экономика России была готова к кризису достаточно серьёзно, и определенный резерв потенциала и возможностей был очень большой в экономике. при этом, как отмечают некоторые чиновники с администрации президента рф и правительства россии - впервые за историю всех кризисов, которые мы проходили, против россии используют абсолютно не рыночные инструменты. ведь санкции как таковые – это же не экономический инструмент воздействия на экономику, санкции – это политический инструмент. и как быть готовыми к этим новым вызовам, имеющим скрытую информационную и экономическую матрицу и подтекст против российской экономики? – вот это принципиально важный вопрос, который сейчас предстоит правительству очень серьёзно решать. об этом говорят и президент, и председатель правительства.
+                        @Model.Article.FirstPartText
+                        @if (!string.IsNullOrEmpty(Model.Article.CenterPicturePath))
+                        {
+                            <img src="@Model.Article.CenterPicturePath" />
+                        }
 
-
-                        <img src="http://aledo-pro.ru/images/solutions/img_5500337688910.png" />
-                        экономика россии была готова к кризису достаточно серьёзно, и определенный резерв потенциала и возможностей был очень большой в экономике. при этом, как отмечают некоторые чиновники с администрации президента рф и правительства россии - впервые за историю всех кризисов, которые мы проходили, против россии используют абсолютно не рыночные инструменты. ведь санкции как таковые – это же не экономический инструмент воздействия на экономику, санкции – это политический инструмент. и как быть готовыми к этим новым вызовам, имеющим скрытую информационную и экономическую матрицу и подтекст против российской экономики? – вот это принципиально важный вопрос, который сейчас предстоит правительству очень серьёзно решать. об этом говорят и президент, и председатель правительства.>
-                        <img src="http://aledo-pro.ru/images/solutions/img_5500337688910.png" />
-                        <img src="http://aledo-pro.ru/images/solutions/img_5500337688910.png" />
+                        @Model.Article.SecondPartText
                     </div>
-                    
-                    <ul class="b-tags list-unstyled">
-                        <li class="b-tags__list-item">
-                            <a class="b-tag" href="javascript:void(0)">Экономика Экономика</a>
-                        </li>
-                        <li class="b-tags__list-item">
-                            <a class="b-tag" href="javascript:void(0)">Эконо </a>
-                        </li>
-                        <li class="b-tags__list-item">
-                            <a class="b-tag" href="javascript:void(0)">Экономика Экономика</a>
-                        </li>
-                        <li class="b-tags__list-item">
-                            <a class="b-tag" href="javascript:void(0)">Эконоа Экономика</a>
-                        </li>
-                        <li class="b-tags__list-item">
-                            <a class="b-tag" href="javascript:void(0)">Экоddномwwwwика Экономика</a>
-                        </li>
-                        <li class="b-tags__list-item">
-                            <a class="b-tag" href="javascript:void(0)">Экон22омика Экономика</a>
-                        </li>
-                    </ul>
-                    
-                        <a class="b-button b-article__button-next b-arrow-button" href="javascript:void(0)">
+
+                    <div>
+                        <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+                        <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+                        <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,linkedin"></div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Article.Tags))
+                    {
+                        <ul class="b-tags list-unstyled">
+                            @foreach (var tag in Model.Article.Tags.Split(','))
+                            {
+                                <li class="b-tags__list-item">
+                                    <a class="b-tag" href="javascript:void(0)">@tag</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+
+                    @if (Model.NextArticleId != null)
+                    {
+                        <a class="b-button b-article__button-next b-arrow-button" href="@Url.Action("Index", "Article", new { id = Model.NextArticleId })">
                             <span class="b-button__text b-arrow-button__text">Следующий пост</span>
                             <span class="b-arrow-button__icon">
                                 <svg class="b-arrow-button__arrow b-arrow-icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 12 21.4" enable-background="new 0 0 12 21.4" xml:space="preserve">
-                                    <polyline fill="none" class="b-arrow-icon__arrow" stroke="#ffffff" stroke-miterlimit="10" points="1,20.9 10.9,10.8 1,0.9 "></polyline>
+                                <polyline fill="none" class="b-arrow-icon__arrow" stroke="#ffffff" stroke-miterlimit="10" points="1,20.9 10.9,10.8 1,0.9 "></polyline>
                                 </svg>
                             </span>
                         </a>
+                    }
+
+                    <div>
+                        <div id="hypercomments_widget"></div>
+                        <script type="text/javascript">
+                            _hcwp = window._hcwp || [];
+                            _hcwp.push({ widget: "Stream", widget_id: 67333 });
+                            (function () {
+                                if ("HC_LOAD_INIT" in window) return;
+                                HC_LOAD_INIT = true;
+                                var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+                                var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+                                hcc.src = ("https:" == document.location.protocol ? "https" : "http") + "://w.hypercomments.com/widget/hc/67333/" + lang + "/widget.js";
+                                var s = document.getElementsByTagName("script")[0];
+                                s.parentNode.insertBefore(hcc, s.nextSibling);
+                            })();
+                        </script>
+                        <a href="http://hypercomments.com" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+                    </div>
                 </div>
                 <div class="hidden-xs  col-xs-12 col-sm-4 col-sm-offset-1 b-last-posts">
                     <h3 class="b-last-posts__heading">ПОСЛЕДНИЕ ПОСТЫ</h3>
-                    @Html.Partial("Partials/ArticlePreview")
-                    @Html.Partial("Partials/ArticlePreview")
-                 
+                    @foreach (var lastArticle in Model.LastArticles)
+                    {
+                        @Html.Partial("Partials/ArticlePreview", lastArticle)
+                    }
                 </div>
-
             </div>
-
         </div>
     </div>
 </div>
-
-
 @Html.Partial("Partials/Footer", Model.CommonInfo)
